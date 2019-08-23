@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+<title>star</title>
+<script type="text/javascript">
+window.onload = function () {C = Math.cos; // cache Math objectsS = Math.sin;U = 0;w = window;j = document;d = j.getElementById("c");c = d.getContext("2d");W = d.width = w.innerWidth;H = d.height = w.innerHeight;c.fillRect(0, 0, W, H); // resize <canvas> and draw black rect (default)c.globalCompositeOperation = "lighter";  // switch to additive color applicationc.lineWidth = 0.2;c.lineCap = "round";var bool = 0, t = 0; // thetad.onmousemove = function (e) {if(window.T) {if(D==9) { D=Math.random()*15; f(1); }clearTimeout(T);}X = e.pageX; // grab mouse pixel coordsY = e.pageY;a=0; // previous coord.xb=0; // previous coord.y A = X, // original coord.xB = Y; // original coord.yR=(e.pageX/W * 999>>0)/999;r=(e.pageY/H * 999>>0)/999;U=e.pageX/H * 360 >>0;D=9;g = 360 * Math.PI / 180;T = setInterval(f = function (e) { // start looping spectrumc.save();c.globalCompositeOperation = "source-over"; // switch to additive color applicationif(e!=1) {c.fillStyle = "rgba(0,0,0,0.02)";c.fillRect(0, 0, W, H); // resize <canvas> and draw black rect (default)}c.restore();i = 25; while(i --) {c.beginPath();if(D > 450 || bool) { // decrease diameterif(!bool) { // has hit maximumbool = 1;}if(D < 0.1) { // has hit minimumbool = 0;}t -= g; // decrease thetaD -= 0.1; // decrease size}if(!bool) {t += g; // increase thetaD += 0.1; // increase size}q = (R / r - 1) * t; // create hypotrochoid from current mouse position, and setup variables (see: http://en.wikipedia.org/wiki/Hypotrochoid)x = (R - r) * C(t) + D * C(q) + (A + (X - A) * (i / 25)) + (r - R); // center on xy coordsy = (R - r) * S(t) - D * S(q) + (B + (Y - B) * (i / 25));if (a) { // draw once two points are setc.moveTo(a, b);c.lineTo(x, y)}c.strokeStyle = "hsla(" + (U % 360) + ",100%,50%,0.75)"; // draw rainbow hypotrochoidc.stroke();a = x; // set previous coord.xb = y; // set previous coord.y}U -= 0.5; // increment hueA = X; // set original coord.xB = Y; // set original coord.y}, 16);}j.onkeydown = function(e) { a=b=0; R += 0.05 }d.onmousemove({pageX:300, pageY:290})
+}
+</script>
+</head>
+<body style="margin:0px;padding:0px;width:100%;height:100%;overflow:hidden;">
+<canvas id="c"></canvas>
+</body>
+</html>
+ ———————————————— 
+版权声明：本文为CSDN博主「y3wegy」的原创文章，遵循CC 4.0 by-sa版权协议，转载请附上原文出处链接及本声明。
+原文链接：https://blog.csdn.net/y3wegy/article/details/8033064
